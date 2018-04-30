@@ -54,5 +54,23 @@ func  searchInTheGrid (whichLetter: Character) {
   }
 }
 
+/* Cette fonction (à implémenter) converti une chaîne de caractère
+en un tableau et l'incrémente dans grid (équiv gridSearchWords) */
+
+var grid = [[Character]]()
+var lineAsAnArray = [Character]()
+var howManyLines = 2
+
+func ConvertALineToAnArray(line: String) {
+    for index in 0...howManyLines {
+    lineAsAnArray = []
+        for character in line {
+            lineAsAnArray.append(character)
+        }
+    print(lineAsAnArray)
+    grid.insert(lineAsAnArray, at: index)
+    }
+}
+
 convertAWordToArray(word: "LEVITATION")
 searchInTheGrid(whichLetter: convertedWord[0])
