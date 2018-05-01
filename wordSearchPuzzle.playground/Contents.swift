@@ -1,6 +1,7 @@
+
 // implémentation de la grille de lettres
-let gridSearchWords: [Character] =
-  [   ["R","E","I","F","I","T","R","O","M"],
+let gridSearchWords: [[Character]] =
+    [["R","E","I","F","I","T","R","O","M"],
       ["E","E","C","N","E","G","E","R","A"],
       ["S","G","I","N","H","A","L","E","I"],
       ["S","A","O","S","C","E","N","E","T"],
@@ -28,21 +29,16 @@ func convertAWordToArray(word: String) {
 
 func  searchInTheGrid (whichLetter: Character) {
   var  howManyLetters = 0
-  var  position  =   0
-  var  x: [Int] = []
-  var y: [Int] = []
-  for  (index, value)  in  gridSearchWords.enumerated()  {
+  var  row  =   0
+  var  xy: [Int:Int] = [:]
+  for  (line, value)  in  gridSearchWords.enumerated()  {
     var  searchInLine  =  value
-    position = 0
+    row = 0
     for  letter: Character  in  searchInLine  {
       if  letter == whichLetter   {
-        print(index, position)
-        x.append(position)
-        y.append(index)
-        print(y, x)
-        var instantX = x.last
-        var instantY = y.last
-        // print("Position \(howManyLetters) : Ligne \(instantY):Colonne \(instantX)")
+        print(line, row)
+        xy[line] = row
+        print(xy)
         howManyLetters  +=   1
       }   else   {
         position  +=   1
@@ -61,8 +57,8 @@ var grid = [[Character]]()
 var lineAsAnArray = [Character]()
 var howManyLines = 2
 
-func ConvertALineToAnArray(line: String) {
-    for index in 0...howManyLines {
+func convertALineToArray(line: String) {
+    for index in 0...(howManyLines - 1) {
     lineAsAnArray = []
         for character in line {
             lineAsAnArray.append(character)
@@ -74,3 +70,5 @@ func ConvertALineToAnArray(line: String) {
 
 convertAWordToArray(word: "LEVITATION")
 searchInTheGrid(whichLetter: convertedWord[0])
+
+convertALineToArray(line: "AZERTYUIOP")
